@@ -4,10 +4,11 @@ import smtplib
 import time
 
 #insert the URL that you want to track
-URL = 'https://www.amazon.ca/Sony-ILCE7M2K-Mirrorless-28-70mm-Compact/dp/B00PX8CNCM/ref=sr_1_4?keywords=sony+a7&qid=1584504361&sr=8-4'
+URL = '[INSERT URL HERE]'
 
 headers = {
-    "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'}
+    #insert device and browser type
+    "User-Agent": '[REDACTED]'}
 
 
 def check_price():
@@ -33,16 +34,17 @@ def send_mail():
     server.ehlo()
     server.starttls()
     server.ehlo()
-    #enter email and password here
+    #enter email and password here (private information redacted)
     #server.login('johnsmith@email.com', 'password123')
 
     subject = 'Price Drop!'
-    body = 'The price of your item fell by 10%!\nCheck the amazon link! {URL}'
+    body = f'The price of your item fell by 10%!\nCheck the amazon link! {URL}'
     msg = f"Subject: {subject}\n\n{body}"
 
     server.sendmail(
-        'johnsmith@email.com',
-        'janesmith@email.com',
+        # type in the sender and recipient
+        'johnsmith@email.com',  # sender
+        'janesmith@email.com',  # recipient
         msg
     )
     print('The email has been sent successfully')
